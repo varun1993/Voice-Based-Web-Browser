@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWIC.FinalProject.WebBrowser", "UWIC.FinalProject.WebBrowser\UWIC.FinalProject.WebBrowser.csproj", "{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWIC.FinalProject.UnitTests", "UWIC.FinalProject.UnitTests\UWIC.FinalProject.UnitTests.csproj", "{72D92176-DDFA-4C2E-8F96-B4FD190F57F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWIC.FinalProject.Common", "UWIC.FinalProject.Common\UWIC.FinalProject.Common.csproj", "{4C6D83E7-1D78-4405-8B8F-15B64BA0DC05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWIC.FinalProject.SpeechRecognitionEngine", "UWIC.FinalProject.SpeechRecognitionEngine\UWIC.FinalProject.SpeechRecognitionEngine.csproj", "{A27E6035-ECAE-4118-AA5F-A5F89A19DFA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWIC.FinalProject.SpeechProcessingEngine", "UWIC.FinalProject.SpeechProcessingEngine\UWIC.FinalProject.SpeechProcessingEngine.csproj", "{5C5E92B1-30AB-42C5-AC1C-A9A3BD9B17C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72D92176-DDFA-4C2E-8F96-B4FD190F57F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72D92176-DDFA-4C2E-8F96-B4FD190F57F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72D92176-DDFA-4C2E-8F96-B4FD190F57F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72D92176-DDFA-4C2E-8F96-B4FD190F57F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C6D83E7-1D78-4405-8B8F-15B64BA0DC05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C6D83E7-1D78-4405-8B8F-15B64BA0DC05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C6D83E7-1D78-4405-8B8F-15B64BA0DC05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C6D83E7-1D78-4405-8B8F-15B64BA0DC05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A27E6035-ECAE-4118-AA5F-A5F89A19DFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27E6035-ECAE-4118-AA5F-A5F89A19DFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27E6035-ECAE-4118-AA5F-A5F89A19DFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27E6035-ECAE-4118-AA5F-A5F89A19DFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C5E92B1-30AB-42C5-AC1C-A9A3BD9B17C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C5E92B1-30AB-42C5-AC1C-A9A3BD9B17C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C5E92B1-30AB-42C5-AC1C-A9A3BD9B17C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C5E92B1-30AB-42C5-AC1C-A9A3BD9B17C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

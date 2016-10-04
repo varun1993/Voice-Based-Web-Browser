@@ -1,0 +1,255 @@
+﻿<UserControl x:Class="UWIC.FinalProject.WebBrowser.Controller.BrowserContainer"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:metro="http://schemas.codeplex.com/elysium"
+             xmlns:params="http://schemas.codeplex.com/elysium/params"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:awesomium="http://schemas.awesomium.com/winfx" 
+             xmlns:my ="clr-namespace:UWIC.FinalProject.WebBrowser.Controller"
+             xmlns:vm ="clr-namespace:UWIC.FinalProject.WebBrowser.ViewModel"
+             x:Name="BrowserContnr"
+             mc:Ignorable="d" Loaded="UserControl_Loaded" KeyDown="UserControl_KeyDown"
+             GotFocus="BrowserContainer_OnGotFocus" LostFocus="BrowserContainer_OnLostFocus">
+	<UserControl.Resources>
+        <Storyboard x:Key="DownAnimation">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.496"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grid">
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="302.5"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="598.703"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+		<Storyboard x:Key="UpAnimation">
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="0.001"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.497"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.001"/>
+			</DoubleAnimationUsingKeyFrames>
+			<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grid">
+				<EasingDoubleKeyFrame KeyTime="0" Value="299.719"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="151"/>
+				<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+			</DoubleAnimationUsingKeyFrames>
+		</Storyboard>
+        <BooleanToVisibilityConverter x:Key="BoolToVisiblity"/>
+        <Storyboard x:Key="EmulatorOpen">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="emulatorWindow">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0.001"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.515"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.002"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="emulatorWindow">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="112.354"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="54.5"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-0.25"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="EmulatorClose">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="emulatorWindow">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.518"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="emulatorWindow">
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="54.25"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="112.604"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MessageBoxClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.496"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.001"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.547"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.002"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="75.667"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="149.891"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="34"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="74.896"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MessageBoxOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.013"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.595"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.999"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.017"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.614"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1.003"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="148"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="60.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.125"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MessageBoxGrid">
+                <EasingDoubleKeyFrame KeyTime="0" Value="73.75"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="29"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-0.25"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.25*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="0.8*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition Width="0.6*"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Column="0" Name="txtURL" Text="{Binding ElementName=BrowserContnr, Path=UrlText, Mode=TwoWay}" FontSize="18" VerticalContentAlignment="Stretch" Margin="0,0,0,5" />
+                <my:NavigationButton Grid.Column="1" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/go-1.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/go-2.png" CommandParameter="Go" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}"/>
+                <my:NavigationButton Grid.Column="2" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/left-arrow-1.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/left-arrow-2.png"  CommandParameter="Backward" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}"/>
+                <my:NavigationButton Grid.Column="3" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/right-arrow-1.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/right-arrow-2.png" CommandParameter="Forward" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}"/>
+                <my:NavigationButton Grid.Column="4" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/refresh-1.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/refresh-2.png" CommandParameter="Refresh" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}"/>
+                <my:NavigationButton Grid.Column="5" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/stop-1.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/stop-2.png"  CommandParameter="Stop" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}"/>
+                <my:NavigationButton Grid.Column="6" CommandParameter="StartVoice" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}" x:Name="StartVoiceButton" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/mic_icon_b_256.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/mic_icon_w_256.png"/>
+                <my:NavigationButton Grid.Column="6" CommandParameter="StopVoice" Command="{Binding ElementName=BrowserContnr, Path=FunctionCommand}" x:Name="StopVoiceButton" DefaultNavigationImage="/UWIC.FinalProject.WebBrowser;component/Images/mic_stop_icon_b_256.png" HoverNavigateImage="/UWIC.FinalProject.WebBrowser;component/Images/mic_stop_icon_w_256.png" Visibility="Collapsed"/>
+                <Grid HorizontalAlignment="Right" Grid.Column="6" Grid.ColumnSpan="5">
+                    <Grid x:Name="emulatorWindow" RenderTransformOrigin="0.5,0.5" Width="220" Height="40">
+                        <Grid.RenderTransform>
+		                    <TransformGroup>
+			                    <ScaleTransform/>
+			                    <SkewTransform/>
+			                    <RotateTransform/>
+			                    <TranslateTransform/>
+		                    </TransformGroup>
+	                    </Grid.RenderTransform>
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <TextBox Width="140" Text="{Binding ElementName=BrowserContnr, Path=CommandText}"/>
+                            <Button Content="Emulate" Margin="5,0,0,0" Command="{Binding ElementName=BrowserContnr, Path=EmulatorCmd}"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <metro:ProgressBar Name="pbWebPageLoad" Grid.Row="1"/>
+
+            <Grid Grid.Row="2" Panel.ZIndex="2" RenderTransformOrigin="0.5,0.5" x:Name="grid">
+                <Grid.Background>
+                    <ImageBrush x:Name="BImage"></ImageBrush>
+                </Grid.Background>
+                <Grid.RenderTransform>
+        		    <TransformGroup>
+        			    <ScaleTransform/>
+        			    <SkewTransform/>
+        			    <RotateTransform/>
+        			    <TranslateTransform/>
+        		    </TransformGroup>
+        	    </Grid.RenderTransform>
+			    <Grid Width="600" Height="600">
+                    <Grid.RowDefinitions>
+					    <RowDefinition/>
+					    <RowDefinition/>
+					    <RowDefinition/>
+					    <RowDefinition/>
+				    </Grid.RowDefinitions>
+				    <Grid.ColumnDefinitions>
+					    <ColumnDefinition/>
+					    <ColumnDefinition/>
+					    <ColumnDefinition/>
+					    <ColumnDefinition/>
+				    </Grid.ColumnDefinitions>
+                    <my:BookmarkButton Grid.Column="0" Grid.Row="0" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/google-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/google-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.google.com"/>
+                    <my:BookmarkButton Grid.Column="1" Grid.Row="0" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/google-plus-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/google-plus-bnw-1.png"  Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://plus.google.com"/>
+                    <my:BookmarkButton Grid.Column="2" Grid.Row="0" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/gmail-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/gmail-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://mail.google.com"/>
+                    <my:BookmarkButton Grid.Column="3" Grid.Row="0" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/youtube-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/youtube-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.youtube.com"/>
+                    <my:BookmarkButton Grid.Column="0" Grid.Row="1" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/facebook-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/facebook-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.facebook.com"/>
+                    <my:BookmarkButton Grid.Column="1" Grid.Row="1" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/twitter-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/twitter-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.twitter.com"/>
+                    <my:BookmarkButton Grid.Column="2" Grid.Row="1" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/linkedin-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/linkedin-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.linkedin.com"/>
+                    <my:BookmarkButton Grid.Column="3" Grid.Row="1" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/imdb-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/imdb-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.imdb.com"/>
+                    <my:BookmarkButton Grid.Column="0" Grid.Row="2" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/microsoft-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/microsoft-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.microsoft.com"/>
+                    <my:BookmarkButton Grid.Column="1" Grid.Row="2" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/msn-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/msn-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.msn.com"/>
+                    <my:BookmarkButton Grid.Column="2" Grid.Row="2" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/yahoo-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/yahoo-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.yahoo.com"/>
+                    <my:BookmarkButton Grid.Column="3" Grid.Row="2" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/dropbox-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/dropbox-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.dropbox.com"/>
+                    <my:BookmarkButton Grid.Column="0" Grid.Row="3" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/ebay-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/ebay-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.ebay.com"/>
+                    <my:BookmarkButton Grid.Column="1" Grid.Row="3" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/amazon-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/amazon-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.amazon.com"/>
+                    <my:BookmarkButton Grid.Column="2" Grid.Row="3" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/apple-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/apple-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.apple.com"/>
+                    <my:BookmarkButton Grid.Column="3" Grid.Row="3" DefaultImage="/UWIC.FinalProject.WebBrowser;component/Images/wikipedia-bnw-2.png" HoverImage="/UWIC.FinalProject.WebBrowser;component/Images/wikipedia-bnw-1.png" Command="{Binding ElementName=BrowserContnr, Path=BookmarkCommand}" CommandParameter="http://www.wikipedia.com"/>
+			    </Grid>
+            </Grid>
+            <awesomium:WebControl Grid.Row="2" Name="webBrowserMain" LoadingFrameComplete="webBrowserMain_LoadingFrameComplete" AddressChanged="webBrowserMain_AddressChanged" Panel.ZIndex="1"/>
+            <Grid Grid.Row="3" Name="BottomBar">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Label Content="X Position =; Y Position =" Name="xyPosition" Foreground="White" FontSize="10" Grid.Column="0"/>
+                <Label Name="LabelCurrentMode" Grid.ColumnSpan="2" Grid.Column="1" Foreground="White" FontSize="11" FontWeight="Bold"/>
+                <!--<Button Width="50" Height="20" Grid.Column="3" Name="BtnTest1" Click="BtnTest1_OnClick"/>
+                <Button Width="50" Height="20" Grid.Column="4" Name="BtnTest" Click="BtnTest_OnClick"/>-->
+                <metro:ProgressBar Name="PbAudioLevel" Grid.Column="5" Height="30" Margin="0,0,10,0"/>
+            </Grid>
+        </Grid>
+        <Grid x:Name="MessageBoxGrid" Height="150" Width="300" Background="#171717" VerticalAlignment="Bottom" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="92*"/>
+                <ColumnDefinition Width="209*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Foreground="White" Grid.Row="0" Name="LblTitle" Content="Message Box Title" Grid.ColumnSpan="2" FontSize="14" FontWeight="Bold"/>
+            <Grid Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Name="ImgIcon"/>
+                <TextBlock Margin="0,5,0,0" Foreground="White" Grid.Column="1" VerticalAlignment="Stretch" TextWrapping="Wrap" Name="TxtMessage" Text="This is just a test message" FontSize="13"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Width="60" Content="Yes" Height="35" Name="BtnYes"></Button>
+                    <Button Grid.Column="1" Width="60" Content="No" Height="35" Name="BtnNo"></Button>
+                    <Button Grid.Column="0" Width="60" Content="OK" Height="35" Name="BtnOk"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

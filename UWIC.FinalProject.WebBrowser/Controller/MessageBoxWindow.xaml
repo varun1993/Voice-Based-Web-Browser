@@ -1,0 +1,45 @@
+﻿<metro:Window x:Class="UWIC.FinalProject.WebBrowser.Controller.MessageBoxWindow"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:metro="http://schemas.codeplex.com/elysium"
+              xmlns:params="http://schemas.codeplex.com/elysium/params"
+              params:Design.Theme="Dark"
+              params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
+              params:Design.ContrastBrush="White"
+              x:Name="MsgBoxWindow" WindowStartupLocation="CenterScreen"
+              Title="MessageBoxWindow" Height="150" Width="300" WindowStyle="None" Loaded="MessageBoxWindow_OnLoaded">
+    <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Foreground="White" Grid.Row="0" Name="LblTitle"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Name="ImgIcon"/>
+                <TextBlock Margin="0,5,0,0" Foreground="White" Grid.Column="1" VerticalAlignment="Stretch" TextWrapping="Wrap" Name="TxtMessage"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.3*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Width="60" Content="Yes" Height="35" Name="BtnYes"></Button>
+                    <Button Grid.Column="1" Width="60" Content="No" Height="35" Name="BtnNo"></Button>
+                    <Button Grid.Column="0" Width="60" Content="Ok" Height="35" Name="BtnOk"></Button>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</metro:Window>

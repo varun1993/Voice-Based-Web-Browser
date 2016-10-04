@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c1b98d02-2257-4512-abc5-b2992b7d49c0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="WebBrowserUpdateService.disco" MetadataType="Disco" ID="77b45db5-1577-4ff5-a4d4-a42fa81e2751" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?disco" />
+    <MetadataFile FileName="WebBrowserUpdateService.xsd" MetadataType="Schema" ID="dd8e7037-39ea-4b4a-a676-3c9685dcba02" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?xsd=xsd3" />
+    <MetadataFile FileName="WebBrowserUpdateService1.xsd" MetadataType="Schema" ID="28ed64e0-b678-451e-bed5-55db4dc4d1f5" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?xsd=xsd1" />
+    <MetadataFile FileName="WebBrowserUpdateService2.xsd" MetadataType="Schema" ID="24c087ff-0be3-4468-80f7-0df406522151" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?xsd=xsd0" />
+    <MetadataFile FileName="WebBrowserUpdateService3.xsd" MetadataType="Schema" ID="806d52cf-65bd-4890-af60-a907576a2a0a" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?xsd=xsd2" />
+    <MetadataFile FileName="WebBrowserUpdateService.wsdl" MetadataType="Wsdl" ID="49bc22f3-4e8b-4f17-8a94-a0dc882eec7a" SourceId="1" SourceUrl="http://prabash-lap/VewBrowserServicePublish/WebBrowserUpdateService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

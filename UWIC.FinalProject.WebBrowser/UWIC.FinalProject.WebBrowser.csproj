@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AD3E6B89-9630-4EE4-B066-8FDB3C99BE9A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UWIC.FinalProject.WebBrowser</RootNamespace>
+    <AssemblyName>UWIC.FinalProject.WebBrowser</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>5.0.40218.0</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>WebBrowser.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Awesomium.Core, Version=1.7.1.0, Culture=neutral, PublicKeyToken=e1a0d7c8071a5214, processorArchitecture=x86" />
+    <Reference Include="awesomium.windows.controls, Version=1.7.1.0, Culture=neutral, PublicKeyToken=7a34e179b8b61c39, processorArchitecture=x86" />
+    <Reference Include="Microsoft.TeamFoundation.Controls, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Log" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="telerik.windows.controls.diagrams, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="telerik.windows.controls.diagrams.extensions, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Diagrams.Core, Version=2012.3.1017.45, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Elysium, Version=2.0.1042.1, Culture=neutral, PublicKeyToken=afa220db249e5b15, processorArchitecture=MSIL" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controller\BookmarkButton.xaml.cs">
+      <DependentUpon>BookmarkButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\BrowserContainer.xaml.cs">
+      <DependentUpon>BrowserContainer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\ControlButton.xaml.cs">
+      <DependentUpon>ControlButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\EmulatorWindow.xaml.cs">
+      <DependentUpon>EmulatorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\MessageBoxWindow.xaml.cs">
+      <DependentUpon>MessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\NavigationButton.xaml.cs">
+      <DependentUpon>NavigationButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controller\TabItemHeader.xaml.cs">
+      <DependentUpon>TabItemHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BrowserContainerModel.cs" />
+    <Compile Include="Model\CommandExecutionManager.cs" />
+    <Compile Include="Service References\svcSendKeys\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\TabItemViewModel.cs" />
+    <Compile Include="View\BrowserWindow.xaml.cs">
+      <DependentUpon>BrowserWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="View\TestEmulator.xaml.cs">
+      <DependentUpon>TestEmulator.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Controller\BookmarkButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\BrowserContainer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\ControlButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\EmulatorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\MessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\NavigationButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controller\TabItemHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\BackgroundImageResourceDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ButtonStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BrowserWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TestEmulator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <None Include="Service References\svcSendKeys\SendKeysService.wsdl" />
+    <None Include="Service References\svcSendKeys\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\svcSendKeys\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\amazon-bnw-1.png" />
+    <Resource Include="Images\amazon-bnw-2.png" />
+    <Resource Include="Images\apple-bnw-1.png" />
+    <Resource Include="Images\apple-bnw-2.png" />
+    <Resource Include="Images\dropbox-bnw-1.png" />
+    <Resource Include="Images\dropbox-bnw-2.png" />
+    <Resource Include="Images\ebay-bnw-1.png" />
+    <Resource Include="Images\ebay-bnw-2.png" />
+    <Resource Include="Images\facebook-bnw-1.png" />
+    <Resource Include="Images\facebook-bnw-2.png" />
+    <Resource Include="Images\gmail-bnw-1.png" />
+    <Resource Include="Images\gmail-bnw-2.png" />
+    <Resource Include="Images\google-bnw-1.png" />
+    <Resource Include="Images\google-bnw-2.png" />
+    <Resource Include="Images\google-plus-bnw-1.png" />
+    <Resource Include="Images\google-plus-bnw-2.png" />
+    <Resource Include="Images\icon-page.png" />
+    <Resource Include="Images\imdb-bnw-1.png" />
+    <Resource Include="Images\imdb-bnw-2.png" />
+    <Resource Include="Images\linkedin-bnw-1.png" />
+    <Resource Include="Images\linkedin-bnw-2.png" />
+    <Resource Include="Images\microsoft-bnw-1.png" />
+    <Resource Include="Images\microsoft-bnw-2.png" />
+    <Resource Include="Images\msn-bnw-1.png" />
+    <Resource Include="Images\msn-bnw-2.png" />
+    <Resource Include="Images\twitter-bnw-1.png" />
+    <Resource Include="Images\twitter-bnw-2.png" />
+    <Resource Include="Images\wikipedia-bnw-1.png" />
+    <Resource Include="Images\wikipedia-bnw-2.png" />
+    <Resource Include="Images\yahoo-bnw-1.png" />
+    <Resource Include="Images\yahoo-bnw-2.png" />
+    <Resource Include="Images\youtube-bnw-1.png" />
+    <Resource Include="Images\youtube-bnw-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\right-arrow-1.png" />
+    <Resource Include="Images\right-arrow-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\left-arrow-1.png" />
+    <Resource Include="Images\left-arrow-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\refresh-1.png" />
+    <Resource Include="Images\refresh-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\stop-1.png" />
+    <Resource Include="Images\stop-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\go-1.png" />
+    <Resource Include="Images\go-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UWIC.FinalProject.Common\UWIC.FinalProject.Common.csproj">
+      <Project>{4c6d83e7-1d78-4405-8b8f-15b64ba0dc05}</Project>
+      <Name>UWIC.FinalProject.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UWIC.FinalProject.SpeechRecognitionEngine\UWIC.FinalProject.SpeechRecognitionEngine.csproj">
+      <Project>{a27e6035-ecae-4118-aa5f-a5f89a19dfa6}</Project>
+      <Name>UWIC.FinalProject.SpeechRecognitionEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\svcSendKeys\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcSendKeys\service.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcSendKeys\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcSendKeys\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\svcSendKeys\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\error-black.png" />
+    <Resource Include="Images\error-white.png" />
+    <Resource Include="Images\info-black.png" />
+    <Resource Include="Images\info-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\metro-bird.png" />
+    <Resource Include="Images\metro-fish.png" />
+    <Resource Include="Images\metro-flowers.png" />
+    <Resource Include="Images\metro-garden.png" />
+    <Resource Include="Images\metro-mechanic.png" />
+    <Resource Include="Images\metro-pattern.png" />
+    <Resource Include="Images\metro-zoo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="WebBrowser.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\close-w.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\minimize-w.png" />
+    <Resource Include="Images\minimize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\mic_icon_b_256.png" />
+    <Resource Include="Images\mic_icon_w_256.png" />
+    <Resource Include="Images\mic_stop_icon_b_256.png" />
+    <Resource Include="Images\mic_stop_icon_w_256.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

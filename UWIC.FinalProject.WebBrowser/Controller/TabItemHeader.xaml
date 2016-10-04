@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="UWIC.FinalProject.WebBrowser.Controller.TabItemHeader"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:metro="http://schemas.codeplex.com/elysium"
+             xmlns:params="http://schemas.codeplex.com/elysium/params"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:awesomium="http://schemas.awesomium.com/winfx" 
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Label}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Label}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="10" BorderBrush="#171717" BorderThickness="2">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" TextElement.FontWeight="Bold" x:Name="contentPresenter"></ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFFF1D1D"/>
+                                <Setter Property="TextElement.Foreground" TargetName="contentPresenter" Value="#FFFF1D1D"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <StackPanel Orientation="Horizontal">
+        <Image Margin="3,0,0,0" VerticalAlignment="Center" Width="15" Name="pageIcon"/>
+        <TextBlock VerticalAlignment="Center" Margin="3,0,0,0" Name="PageTitle" Foreground="White" FontSize="13" Text="New Tab" MaxWidth="80" TextTrimming="WordEllipsis"/>
+        <Label Content="X" Margin="5,0,0,0" Name="btnClose" Foreground="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="18" MouseLeftButtonUp="btnClose_MouseLeftButtonUp" Style="{DynamicResource RoundCorner}"/>
+    </StackPanel>
+</UserControl>

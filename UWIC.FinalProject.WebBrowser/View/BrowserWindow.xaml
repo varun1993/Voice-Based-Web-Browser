@@ -1,0 +1,66 @@
+﻿<metro:Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+              xmlns:metro="http://schemas.codeplex.com/elysium"
+              xmlns:params="http://schemas.codeplex.com/elysium/params"
+              xmlns:vm ="clr-namespace:UWIC.FinalProject.WebBrowser.ViewModel"
+              xmlns:my ="clr-namespace:UWIC.FinalProject.WebBrowser.Controller"
+              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation" 
+              x:Class="UWIC.FinalProject.WebBrowser.View.BrowserWindow"
+              params:Design.Theme="Dark"
+              params:Design.AccentBrush="{x:Static metro:AccentBrushes.Blue}"
+              params:Design.ContrastBrush="White"
+              Title="Vocem Browser" Height="674" Width="1200" MinHeight="674" MinWidth="1200" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" x:Name="MainBrowserWindow" WindowState="Maximized" WindowStyle="None">
+    <metro:Window.DataContext>
+        <vm:TabItemViewModel/>
+    </metro:Window.DataContext>
+    <metro:Window.ApplicationBar>
+        <metro:ApplicationBar>
+            <metro:CommandButton Header="Add New Tab" Margin="5" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding ClickCommand}" >
+                <Image Source="/UWIC.FinalProject.WebBrowser;component/Images/icon-add.png"  Width="25" />
+            </metro:CommandButton>
+            <metro:CommandButton Header="Show Grid" Margin="5" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding GridShowCommand}" >
+                <Image Source="/UWIC.FinalProject.WebBrowser;component/Images/icon-add.png"  Width="25" />
+            </metro:CommandButton>
+            <metro:CommandButton Header="Hide Grid" Margin="5" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Command="{Binding GridHideCommand}" >
+                <Image Source="/UWIC.FinalProject.WebBrowser;component/Images/icon-add.png"  Width="25" />
+            </metro:CommandButton>
+        </metro:ApplicationBar>
+    </metro:Window.ApplicationBar>
+    <Grid>
+        <Decorator metro:Window.IsApplicationBarHost="True"/>
+        <TabControl ItemsSource="{Binding TabItems}" x:Name="MainTabControl" SelectedIndex="{Binding SelectedIndex, Mode=TwoWay}" />
+        <Grid Width="70" VerticalAlignment="Top" HorizontalAlignment="Right" Height="40">
+            <my:ControlButton HorizontalAlignment="Right" Width="40" Height="40" DefaultControlImage="/UWIC.FinalProject.WebBrowser;component/Images/minimize.png" HoverControlImage="/UWIC.FinalProject.WebBrowser;component/Images/minimize-w.png" Margin="0,0,30,0" x:Name="MinimizeButton" MouseLeftButtonUp="MinimizeButton_OnMouseLeftButtonUp"/>
+            <my:ControlButton HorizontalAlignment="Right" Width="40" Height="40" MouseLeftButtonUp="CloseButton_OnMouseLeftButtonUp" DefaultControlImage="/UWIC.FinalProject.WebBrowser;component/Images/close.png" HoverControlImage="/UWIC.FinalProject.WebBrowser;component/Images/close-w.png"/>
+        </Grid>
+        <Grid Name="GridRuler" Visibility="{Binding GridVisibility, UpdateSourceTrigger=PropertyChanged}">
+            <telerik:RadDiagramRuler Diagram="{Binding ElementName=xDiagram}" Placement="Top" Opacity="0.5">
+                <telerik:RadDiagramRuler.ScaleDefinitions>
+                    <telerik:DiagramScaleDefinitionCollection>
+                        <telerik:DiagramScaleDefinition>
+                            <telerik:DiagramScaleItemDefinition Interval="5" Type="XSmallTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="10" Type="SmallTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="25" Type="MediumTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="50" Type="LargeTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="50" Type="Label" />
+                        </telerik:DiagramScaleDefinition>
+                    </telerik:DiagramScaleDefinitionCollection>
+                </telerik:RadDiagramRuler.ScaleDefinitions>
+            </telerik:RadDiagramRuler>
+            <telerik:RadDiagramRuler Diagram="{Binding ElementName=xDiagram}" Placement="Right" Opacity="0.5">
+                <telerik:RadDiagramRuler.ScaleDefinitions>
+                    <telerik:DiagramScaleDefinitionCollection >
+                        <telerik:DiagramScaleDefinition>
+                            <telerik:DiagramScaleItemDefinition Interval="5" Type="XSmallTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="10" Type="SmallTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="25" Type="MediumTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="50" Type="LargeTick" />
+                            <telerik:DiagramScaleItemDefinition Interval="50" Type="Label" />
+                        </telerik:DiagramScaleDefinition>
+                    </telerik:DiagramScaleDefinitionCollection>
+                </telerik:RadDiagramRuler.ScaleDefinitions>
+            </telerik:RadDiagramRuler>
+            <telerik:RadDiagram x:Name="xDiagram"/>
+        </Grid>
+    </Grid>
+</metro:Window>
